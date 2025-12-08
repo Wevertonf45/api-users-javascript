@@ -3,9 +3,8 @@ import { connection } from "../configs/database.js"
 export const createUserRepository = {
     //Encontrar email
     findByEmail: async (email) => {
-        const [rows] = await connection.execute(
-            'SELECT * FROM users WHERE email = ?', [email]
-        )
+        const [rows] = await connection.execute('SELECT * FROM users WHERE email = ?', [email])
+        return rows[0]
     },
 
     //Criar usuário
@@ -14,5 +13,7 @@ export const createUserRepository = {
             'INSERT INTO users (firstName, lastName, email) VALUES (?, ?, ?)',
             [firstName, lastName, email]
         )
+
+        return result.insertId
     }
 }

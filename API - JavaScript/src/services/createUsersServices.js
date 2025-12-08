@@ -1,4 +1,4 @@
-import { createUserRepository } from "../repositories/usersRepository.js"
+import { createUserRepository } from "../repositories/CreateUsersRepository.js"
 
 export const createUserService = async ({ firstName, lastName, email }) => {
     //Verificar os campos
@@ -20,5 +20,5 @@ export const createUserService = async ({ firstName, lastName, email }) => {
 
     //Criar o usuário e retornar
     const id = await createUserRepository.create(firstName, lastName, email)
-    return {id, firstName, lastName, email}
+    return { id, firstName, lastName, email }
 }
