@@ -1,4 +1,4 @@
-import { registerRepository } from "../repositories/registerRepository"
+import { registerRepository } from "../repositories/registerRepository.js"
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
 
@@ -15,7 +15,7 @@ export const registerService = async ({ name, email, password, code }) => {
     }
 
     //Verificar o código
-    if (code !== process.env.CODE) {
+    if (code != process.env.CODE) {
         throw {
             status: 403,
             message: 'Código inválido!'
